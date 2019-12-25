@@ -1,0 +1,58 @@
+<html data-ng-app="routeApp"> 
+	<head>
+		<title>AngularJS Routing Basics</title>
+	</head>
+	<body>
+		<div>
+			<h1>AngularJS Training</h1>
+		<div>
+		<div data-ng-controller="RouteCtrl">
+			<div>
+	<input id="btnHome" type="button" value="Home" data-ng-click="loadPage('')"/>
+	<input id="btnCountry" type="button" value="Country" data-ng-click="loadPage('country')"/>
+	<input id="btnState" type="button" value="State" data-ng-click="loadPage('country/state')"/>
+	<input id="btnCity" type="button" value="City" data-ng-click="loadPage('country/state/city')"/>
+	<input id="btnTrainer" type="button" value="TrainerInfo" data-ng-click="loadPage('trainer')"/>
+			</div>
+		  <hr/>
+			<div data-ng-view></div>
+		</div>
+		<div>&copy;Copyrights Reserved 2015 IGATE</div>
+	</body>
+	<script src="./scripts/jquery.js"></script>
+	<script src="./scripts/angular.js"></script>
+	<script src="./scripts/angular-route.js"></script>
+	<script>
+		var app = angular.module('routeApp',['ngRoute']);
+
+		app.config(function($routeProvider){
+			$routeProvider.when('/',{
+				template:'<h1>{{company}}</h1>'
+			}).when('/country',{
+				template:'<h1>India</h1>'
+			}).when('/country/state',{
+				template:'<h1>India&rsaquo;Karnataka</h1>'
+			}).when('/country/state/city',{
+				template:'<h1>India&rsaquo;Karnataka&rsaquo;Bengaluru</h1>'
+			}).when('/trainer',{
+				templateUrl:'partials/trainer.html'
+			}).otherwise({
+				redirectTo:'/'
+			});
+		});
+		
+		app.controller('RouteCtrl',function($scope,$location){
+			$scope.company = "IGATE";
+			$scope.trainerName = "Karthik M";
+			$scope.loadPage = function(page){
+				//Clears the history
+				$location.replace();
+				$location.url("/"+page);
+			}
+		});
+	
+	</script>
+</html>
+
+
+

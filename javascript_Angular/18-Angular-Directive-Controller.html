@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html data-ng-app="MyApp">
+<head>
+	<title>AngularJS - Directive - Controller</title>
+</head>
+<body>
+	<div data-igate-directive data-ng-controller="SplCtrl">
+		
+	</div>
+	<div data-ng-controller="MyCtrl">
+		
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('MyApp',[]);
+	
+	app.directive('igateDirective',function(){
+		return {
+			restrict:'A',
+			controller:function($scope){
+				$scope.name="Anil"
+				console.log($scope.$id);
+			},
+			template:'<h1>{{name}}-{{company}}</h1>'
+			
+		}
+	});
+	
+	app.controller('MyCtrl',function($scope){
+		$scope.name = "Karthik";
+		$scope.company = "IGATE";
+		console.log($scope.$id);
+	});
+	
+	app.controller('SplCtrl',function($scope){
+		$scope.name = "Amar";
+		$scope.company = "CapGemini";
+		console.log($scope.$id);
+	});
+</script>
+</html>

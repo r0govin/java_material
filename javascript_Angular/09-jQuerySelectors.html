@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery - Selectors</title>
+</head>
+<body>
+	<p>Para-1</p>
+	<p id="p1">Para-2</p>
+	<p class="para">Para-3</p>
+	<p class="para">Para-4</p>
+	<p data-custom="igate">Para-5</p>
+	<p data-custom="capegemini">Para-6</p>
+	<p data-custom="igate global solutions">Para-7</p>
+	<div>
+		<p>Para-8</p>
+	</div>
+	<input type="text"/>
+	<input type="text" readonly/>
+	<input type="text" disabled/>
+	<input type="checkbox" checked/>
+	<input type="checkbox" />
+	<input type="button" value="Click"/>
+	<input type="Submit" value="Submit"/>
+</body>
+<script src="./scripts/jquery.js"></script>
+<script>
+	$(document).ready(function(){
+		alert('Dom Loaded');
+	});
+</script>
+</html>
+<!--
+ HTML 5 JS API
+ 
+ 
+ document.querySelectorAll('p')
+[<p>​Para-1​</p>​, <p id=​"p1">​Para-2​</p>​, <p class=​"para">​Para-3​</p>​, <p class=​"para">​Para-4​</p>​, <p data-custom=​"igate">​Para-5​</p>​, <p data-custom=​"capegemini">​Para-6​</p>​, <p data-custom=​"igate golbal solutions">​Para-7​</p>​, <p>​Para-8​</p>​]
+
+document.querySelectorAll('#p1')
+[<p id=​"p1">​Para-2​</p>​]
+
+document.querySelectorAll('.para')
+[<p class=​"para">​Para-3​</p>​, <p class=​"para">​Para-4​</p>​]
+
+document.querySelectorAll('div p')
+[<p>​Para-8​</p>​]
+
+document.querySelectorAll('p[data-custom]')
+[<p data-custom=​"igate">​Para-5​</p>​, <p data-custom=​"capegemini">​Para-6​</p>​, <p data-custom=​"igate golbal solutions">​Para-7​</p>​]
+
+document.querySelectorAll('[data-custom="igate"]')
+[<p data-custom=​"igate">​Para-5​</p>​]
+-->
+
+<!--
+jQuery Selectors
+
+$('p')
+[<p>​Para-1​</p>​, <p id=​"p1">​Para-2​</p>​, <p class=​"para">​Para-3​</p>​, <p class=​"para">​Para-4​</p>​, <p data-custom=​"igate">​Para-5​</p>​, <p data-custom=​"capegemini">​Para-6​</p>​, <p data-custom=​"igate global solutions">​Para-7​</p>​, <p>​Para-8​</p>​]
+
+$('#p1')
+[<p id=​"p1">​Para-2​</p>​]
+
+$('.para')
+[<p class=​"para">​Para-3​</p>​, <p class=​"para">​Para-4​</p>​]
+
+$('[data-custom]')
+[<p data-custom=​"igate">​Para-5​</p>​, <p data-custom=​"capegemini">​Para-6​</p>​, <p data-custom=​"igate global solutions">​Para-7​</p>​]
+
+$('[data-custom="igate"]')
+[<p data-custom=​"igate">​Para-5​</p>​]
+
+$('[data-custom^="igate"]')
+[<p data-custom=​"igate">​Para-5​</p>​, <p data-custom=​"igate global solutions">​Para-7​</p>​]
+
+$('[data-custom*="global"]')
+[<p data-custom=​"igate global solutions">​Para-7​</p>​]
+
+$('[data-custom$="solutions"]')
+[<p data-custom=​"igate global solutions">​Para-7​</p>​]
+
+$('div p')
+[<p>​Para-8​</p>​]
+
+$('p:first')
+[<p>​Para-1​</p>​]
+
+$('p:last')
+[<p>​Para-8​</p>​]
+
+$('p:eq(4)')
+[<p data-custom=​"igate">​Para-5​</p>​]
+
+$('p:contains("Para-6")')
+[<p data-custom=​"capegemini">​Para-6​</p>​]
+
+$(':input')
+[<input type=​"text">​, <input type=​"text" readonly>​, <input type=​"text" disabled>​, <input type=​"checkbox" checked>​, <input type=​"checkbox">​, <input type=​"button" value=​"Click">​, <input type=​"Submit" value=​"Submit">​]
+
+$(':text')
+[<input type=​"text">​, <input type=​"text" readonly>​, <input type=​"text" disabled>​]
+
+$(':button')
+[<input type=​"button" value=​"Click">​]
+
+$(':submit')
+[<input type=​"Submit" value=​"Submit">​]
+
+$(':checkbox')
+[<input type=​"checkbox" checked>​, <input type=​"checkbox">​]
+
+$(':text:disabled')
+[<input type=​"text" disabled>​]
+
+$(':checkbox:checked')
+[<input type=​"checkbox" checked>​]
+
+$('p:even')
+[<p>​Para-1​</p>​, <p class=​"para">​Para-3​</p>​, <p data-custom=​"igate">​Para-5​</p>​, <p data-custom=​"igate global solutions">​Para-7​</p>​]
+
+$('p:odd')
+[<p id=​"p1">​Para-2​</p>​, <p class=​"para">​Para-4​</p>​, <p data-custom=​"capegemini">​Para-6​</p>​, <p>​Para-8​</p>​]
+
+-->
+

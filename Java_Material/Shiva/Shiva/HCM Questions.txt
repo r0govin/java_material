@@ -1,0 +1,57 @@
+1st round:
+----------
+
+1. Difference between linked list and array List ?
+2. best cuse of linked list and array List. Tell me the scenarios
+3. we have file and taht file has all the words. find out the duplicate words in the file and which data structure is best for this operation
+4. write a program for fibonacci series in recursive way
+5. write a program for palindrome for a string
+6. find the missing elament in a sorted array array. 
+     ex int[] i={0,1,2,3,4,6,7,8}
+7. if string is given find the repeated characters in the given String
+8. Asking the Basic question on oops. asked about constructor how its work on inheritence scenarion.
+9. Diffence between Thread and runnable and why we should go for runnable always
+
+2nd round :
+----------
+
+1. Asking about project structure
+2. questions on my previous projects
+3. Give twwo table and aking the basic quieries like find the employees who are working in the particulat department  nad questions on related quiries ?
+4. primary key and foreignkey concept
+5. find the 4th highest salary in Employee table. wt are the ways u can increase the performance of quesry if we use subquiries
+6. hashmap implementation. why we override the equals() and hashcode() method ?
+7. explain the logic of wriiteen programs in 1st round (find missing element in an array and duplicate characters and their occurances in give string) 
+8. find the minimum element in the give arry?
+9. how u find the minimum element in arry in first attemt like O(1)  and which data structue is best to find like this.
+10. Linear search concept
+11. write a program for binary Search and explain ?
+12. ho the Treemap is working internally and which algoritham is internally used.
+13. questions on binary tree.
+14. which design pattern spring internally using
+15. life cycle of servlets and spring bean life cycle
+16. Difference between the Where clause and having clause ?
+
+3rd round:
+----------
+
+1. questions related to project related stuff.
+2. questions on JSF framework
+3. difference between service first and contract first.
+4. concept of inheritence . how we access the private data members of parent class in child class. if it is possible how.
+5. what is reflection API.
+6. write a profgarm for jdbc connction. how internally java woking with databse. how you are connct using JDBC and what happened internally ?
+7. what the class.forname(com.igate.Test) will do internall. how it will load the particular driver ?
+8. how many ways we can copy the object.
+9. can we clone the userdefined object ? how we clone the user defined Objects?
+10. difference between the shallow cloning and deep cloning and which one is default
+11. write a program for intersection of collwctions means. take any two collections and find the common elments and retrieve
+12. write a program to find the average of give array of elements
+13. writ the program for serialization and concept of serialization.
+14. asking about environment variable and tell the steps toi install tomcat in to ur machine
+15. what is the GWT frame work what are the advantages compared to other frameworks
+16. asking about Jvascript and how u did the scription in your project.
+17. what is AJAX and when we go for AJAX calls.  
+18. how you are handling the calender components in you application and how you are validating.
+19. some basic question on Oops concepts....
+	 

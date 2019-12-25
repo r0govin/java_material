@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html data-ng-app="FilterApp">
+<head>
+	<title>jQuery Ajax</title>
+</head>
+<body>
+	<input id="btnAjax" type="button" value="GET Currency"/>
+	<div id="target"></div>
+</body>
+<script src="./scripts/jquery.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#btnAjax').bind('click',function(){
+			 var url = "http://www.webservicex.net/CurrencyConvertor.asmx/ConversionRate?FromCurrency=USD&ToCurrency=INR";
+			$.ajax(url)
+			.done(function(response) {
+				var result = response.documentElement.textContent;
+				$('#target').text(result);
+			})
+			.fail(function() {
+				alert( "error" );
+			});
+		});
+	});
+</script>
+</html>
+
+
+<!--chrome.exe –allow-file-access-from-files -disable-web-security -->

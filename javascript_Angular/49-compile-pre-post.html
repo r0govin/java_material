@@ -1,0 +1,39 @@
+<html data-ng-app="serviceApp"> 
+	<head>
+		<title>Compile - PreLink - Post Link</title>
+	</head>
+	<body>
+		<div>
+			<user-directive>Outer
+				<user-directive>Middle
+					<user-directive>Inner</user-directive>
+				</user-directive>
+			</user-directive>
+		</div>
+	</body>
+	<script src="./scripts/angular.js"></script>
+	<script>
+		var app = angular.module('serviceApp',[]);
+		app.directive('userDirective',function(){
+			return {
+				restrict:'E',
+				compile:function(element,attrs){
+					console.log('Compile');
+					console.log(element.html());
+					return {
+						pre:function(s,e,a){
+							console.log('Pre-Linking');
+							console.log(e.html());
+						},
+						post:function(s,e,a){
+							console.log('Post-Linking');
+							console.log(e.html());
+						}
+					}
+				}
+			}
+		});
+		
+	</script>
+</html>
+

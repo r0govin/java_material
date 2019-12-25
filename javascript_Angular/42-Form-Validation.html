@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html data-ng-app="formApp">
+<head>
+  <title>Form Validation</title>
+  <style>
+	.error{color:red}
+  </style>
+</head>
+<body>
+  <div data-ng-controller="frmCtrl">
+	<form name="frm">
+		<table style="width:600px" cellpadding="5" cellspacing="5">
+			<tr>
+				<td style="width:50px" align="right"><label>Id : </label></td>
+				<td style="width:200px">
+					<input name="txtId" type="text" data-ng-model="employee.id" data-ng-minlength="4" data-ng-maxlength="6" data-ng-required="true"/>
+				</td>
+				<td>
+			
+			<span class="error" data-ng-show="frm.txtId.$dirty && frm.txtId.$error.required">Id is required</span>
+			
+			
+			
+			<span class="error" data-ng-show="frm.txtId.$dirty && frm.txtId.$error.minlength">Min 4 digits required</span>
+			
+			<span class="error" data-ng-show="frm.txtId.$dirty && frm.txtId.$error.maxlength">Max 6 digits allowed</span>
+			
+				</td>			
+			</tr>
+			<tr>
+				<td style="width:50px" align="right"><label>Name : </label></td>
+				<td style="width:200px">
+					<input name="txtName" type="text" data-ng-model="employee.name" data-ng-pattern="/^[a-zA-Z]+$/i" data-ng-required="true"/>
+				</td>
+				<td>
+			<span class="error" data-ng-show="frm.txtName.$dirty && frm.txtName.$error.required">Name required</span>
+			<span class="error" data-ng-show="frm.txtName.$dirty && frm.txtName.$error.pattern">Only Alphabets allowed</span>
+				</td>		
+			</tr>
+			<tr>
+				<td colspan="3">
+					<input type="submit" data-ng-disabled="frm.$invalid" value="Submit"/>
+					<input type="reset" value="Reset" data-ng-click="frm.$setPristine()"/>
+				</td>
+			</tr>
+		</table>
+	</form >
+	<div>
+	<!--	Form Error State : <pre>{{frm.$error | json}}</pre> -->
+	</div>
+	<div>
+		Form Submitted State : {{frm.$submitted}}
+	</div>
+  </div>
+
+ <script src="./scripts/angular.js"></script>
+ <script>
+	var app = angular.module('formApp', []);
+
+	app.controller('frmCtrl',function($scope){
+		$scope.employee = {id:0,name:''};
+	});
+	
+	
+ </script>
+ </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-http-Service</title>
+</head>
+<body>
+	<div data-ng-controller="EmployeeController">
+		<ul>
+			<li data-ng-repeat="employee in employees" data-ng-bind-template="{{employee._id}}-{{employee.name}}-{{employee.salary}}"></li>
+		</ul>
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+	
+	app.factory('EmployeeService',function($http){
+		return {
+			getAllEmployees:function(cb){
+				var url = "https://api.mongolab.com/api/1/databases/igateangulardb/collections/employees?apiKey=MtPdcNq7LNIqqCkjtZS-GD4EzIY9J_qE";
+				$http({
+					method: 'GET',
+					url: url
+				}).then(function(response){
+					cb(response);
+				},function(err){
+					console.log(err);
+				});
+			}
+		}
+	});
+
+	app.controller('EmployeeController',function($scope,EmployeeService){
+		EmployeeService.getAllEmployees(function(response){
+			$scope.employees = response.data;
+		});
+	});
+	
+</script>
+</html>

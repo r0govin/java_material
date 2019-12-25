@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html data-ng-app="MyApp">
+<head>
+	<title>AngularJS-Directive-Isolated-Scope(Execute Function)</title>
+</head>
+<body>
+	<div data-ng-controller="Mycntrl">
+		<div>
+			<span>Name</span>:<span data-ng-bind="name"></span>
+			<input type="button" value="Change Name via Controller" data-ng-click="changeName()"/>
+		</div>
+		<hr/>
+		<div data-igate-directive data-name="{{name}}" data-change-name="changeName()"></div>
+		
+	</div>
+	
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('MyApp',[]);
+	
+	app.directive('igateDirective',function(){
+		return {
+			scope:{
+				name:'@',
+				changeName:'&'
+			},
+			replace:true,
+			template:'<div>'+
+			'<span>Name</span>:<span data-ng-bind="name"></span>'+
+			'<input type="button" value="Change Name via Directive"'+ 'data-ng-click="changeName()"/>'+
+			'</div>'
+		}
+	});
+	app.controller('Mycntrl',function($scope){
+		$scope.name = "Karthik";
+		$scope.changeName = function(){
+			$scope.name = "Anil";
+		}
+	});
+	
+	
+</script>
+</html>

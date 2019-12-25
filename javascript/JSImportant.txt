@@ -1,0 +1,185 @@
+JS Primitive Types
+1.Number
+var n=new Number(5);
+n.valueOf()
+
+2.String
+var s=new String("IGATE");
+
+3.Boolean
+var b=new Boolean(false);
+
+4.undefined
+var u = undefined
+u === undefined //returns true
+
+5.null
+var na = null;
+na === undefined //returns false
+
+Recommended
+----------------
+typeof(variablename)
+var n = 5;
+var s = "IGATE";
+var b = false;
+var u = undefined;
+var na = null;
+
+typeof(n) returns "number"
+
+
+Reference Type
+--------------
+var obj = new Object();
+or
+var obj = {};
+
+var emp = {id:714709,name:'Karthik',active:false};
+
+Iterate the keys in object
+---------------------------
+for(prop in emp){
+	console.log(prop+":"+emp[prop]);
+}
+
+var emp = {};
+emp.id = 714709;
+emp['name'] = "Karthik";
+
+delete emp['name']; // delete the property from object
+
+Array
+------
+var  numbers = [];
+numbers.push(10);
+numbers.push(20);
+numbers.push(30);
+numbers // [10,20,30];
+number.splice(1,1) // delete 20 from array
+numbers.pop() //delete 30 from array
+
+Functions
+-----------
+Named function
+***************
+function add(a,b){
+	return a+b;
+}
+add(5,6); 
+
+
+Self Invoking function
+**********************
+(function add(a,b){
+	return a+b;
+})(5,6);
+
+Anonymous Functions
+********************
+(function(a,b){
+	return a+b;
+})(5,6);
+
+Global and local variable
+****************************
+function demo(){
+   var local = 5; // Local Variable 
+   global = 10; //Global Variable attached to Global scope
+}
+global();
+window.global
+
+Nested Functions
+*****************
+function add(a){
+  return function(b){
+      return a+b;
+  }
+}
+
+add(5)(7);
+
+Constructor Functions
+**********************
+function Employee(id,name){
+	this.id = id;
+	this.name = name;
+}
+var e1= new Employee(101,"Karthik");
+var e2= new Employee(102,"Ganesh");
+
+Callback function
+******************
+(function(){
+   console.log("One");
+   setTimeout(function(){
+     console.log("Two");
+   },0);
+   console.log("Three");
+})();
+
+function sample(cb){
+   var data = "Data from Sample";
+   cb(data);
+}
+
+function print(arg){
+   console.log(arg+" using print function");
+}
+
+sample(print);
+
+Closure
+--------
+(function(){
+    var year = 2015;
+	printYear = function(){
+	  console.log(year);
+	}
+	incrementYear = function(){
+	  year++;
+	}
+	setYear = function(y){
+	  year = y;
+	}
+})();
+
+Module
+******
+
+IIFE : Immediately Invoking Function Expression
+
+var module = (function(){
+	return {
+	
+	}
+})();
+
+
+var Calculator = (function(){
+	var f1 = function(a,b){
+		return a+b;
+	}
+	var f2 = function(a,b){
+		return a*b;
+	}
+	return {
+		add:f1,
+		multiply:f2
+	};
+})();
+
+var SplCalculator = (function(){
+	var f1 = function(a,b){
+		alert(a+b);
+	}
+	var f2 = function(a,b){
+		alert(a*b);
+	}
+	return {
+		add:f1,
+		multiply:f2
+	};
+})();
+

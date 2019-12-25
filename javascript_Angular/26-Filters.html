@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-ng-app="FilterApp">
+<head>
+	<title>AngularJS-Filters</title>
+</head>
+<body>
+	<div data-ng-controller="MyController">
+		<div>{{'igate'|uppercase}}</div>
+		<div>{{'IGATE'|lowercase}}</div>
+		<div>{{3000|currency:'Rs.'}}</div>
+		<div>{{data|json}}</div>
+		<div>{{today|date:'EEE-dd-MMM-yyyy'}}</div>
+		<div>{{['Karthik','Veena','Keshava']|filter:'V'}}</div>
+		<div>{{thisDay}}</div>
+		<div>{{'raja'|igateupper:false}}</div>
+		<div>{{[1,2,3,4,5,6,7,8,9,10]|arrayFilter:'odd'}}</div>
+		<div>{{results}}</div>
+	</div>
+	
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('FilterApp',[]);
+	
+	app.filter('arrayFilter',function(){
+		return function(arr,type){
+			var odd=[];
+			var even=[];
+			arr.forEach(function(number){
+				if(number%2==0)
+					even.push(number);
+				else
+					odd.push(number);
+			});
+			if(type=="even")
+				return even;
+			if(type=="odd")
+				return odd;
+		}
+	});
+	app.filter('igateupper',function(){
+		return function(data,isUpper){
+			if(isUpper)
+				return data.toUpperCase();
+			else
+				return data.toLowerCase();
+		}
+	});
+	
+	
+	app.controller('MyController',function($scope,$filter){
+		$scope.data = {id:101,name:'Karthik'};
+		$scope.today = new Date();
+		$scope.thisDay = $filter('date')(new Date(),"EEEE dd,MMM yyyy hh:mm:ss");
+		$scope.results = $filter('arrayFilter')([54,23,21,87,32],'odd');
+	
+	});
+	
+	
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-Services</title>
+</head>
+<body>
+	<div data-ng-controller="ServiceController">
+		<span>{{addResult}}</span>
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+	
+	app.service('AddService',function(){
+		this.add = function(a,b){
+			return a+b;
+		}
+	});
+	
+	app.controller('ServiceController',function($scope,AddService){
+		$scope.addResult = AddService.add(4,5);
+	});
+	
+	
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-ng-app="FilterApp">
+<head>
+	<title>Ajax GET</title>
+</head>
+<body>
+	<input type="button" value="GET Currency" onclick="sendXHR()"/>
+	<div id="target"></div>
+</body>
+<script>
+	var xhr = null;
+	function sendXHR(){
+		 xhr = new XMLHttpRequest();
+		 var url = "http://www.webservicex.net/CurrencyConvertor.asmx/ConversionRate?FromCurrency=USD&ToCurrency=INR";
+		 xhr.open('GET',url,true);
+		 xhr.onreadystatechange = updateResults;
+		 xhr.send();
+	}
+	function updateResults(){
+		if(xhr.readyState === 4 && xhr.status === 200){
+			var result = xhr.responseXML;
+			document.getElementById('target').innerText = result.documentElement.textContent;
+		}
+		else{
+			console.log(xhr.statusText);
+		}
+		
+	}
+</script>
+</html>
+
+<!--chrome.exe –allow-file-access-from-files -disable-web-security -->

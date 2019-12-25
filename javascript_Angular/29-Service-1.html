@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-Services</title>
+</head>
+<body>
+	<div data-ng-controller="ServiceController">
+		<span>{{addResult}}</span>
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+	
+	app.factory('CalculatorService',function(){
+		return {
+			add:function(a,b){
+				return a+b;
+			},
+			multiply : function(a,b){
+				return a*b;
+			}
+		}
+	});
+	
+	app.controller('ServiceController',function($scope,CalculatorService){
+		$scope.addResult = CalculatorService.add(4,5);
+	});
+	
+	
+</script>
+</html>
+<!--
+
+All the providers are instantiated only once. That means that they are all singletons.
+
+A constant is a value that can be injected everywhere. The value of a constant can never be changed.
+
+A value is just a simple injectable value.
+
+A service is an injectable constructor.
+
+A factory is an injectable function.
+
+A provider is a configurable factory.
+
+-->

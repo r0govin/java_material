@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html data-ng-app="MyApp">
+<head>
+	<title>AngularJS-Directive-Inherited-Scope</title>
+</head>
+<body>
+	<div data-ng-controller="SplCntrl">
+		<div data-ng-controller="MyCntrl">
+			<div data-igate-directive></div>
+			<hr/>
+			<div data-igate-directive></div>
+			<hr/>
+			<div data-igate-directive></div>
+		</div>
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('MyApp',[]);
+	
+	/*app.run(function($rootScope){
+		$rootScope.name="Karthik";
+	});*/
+	app.directive('igateDirective',function(){
+		return {
+			scope:true,
+			template:'<div><input type="text" ng-model="name"/><span>{{name}}</span></div>'
+		}
+	});
+	
+	app.controller('MyCntrl',function($scope){
+		$scope.name = "Karthik";
+	});
+	
+	app.controller('SplCntrl',function($scope){
+		$scope.name = "Ashik";
+	});
+	
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery - Events</title>
+<style>
+	.custom{
+		color:red;
+		background-color:yellow;
+		font-size:30pt;
+		text-transform:uppercase;
+	}
+</style>
+</head>
+<body>
+	<div id="target">IGATE</div>
+	<hr/>
+	<input id="btnStyle" type="button" value="Apply / Remove Style"/>
+	
+</body>
+<script src="./scripts/jquery.js"></script>
+<script>
+	$(document).ready(function(){
+		/*$('#btnStyle').click(function(){
+			$('#target').toggleClass('custom');
+		});*/
+		/*$('#btnStyle').bind('click',function(){
+			$('#target').toggleClass('custom');
+			$('#btnStyle').unbind('click');
+		});*/
+		
+		$('#btnStyle').bind('mouseenter mouseleave',function(ev){
+			$('#target').toggleClass('custom');
+			console.log(ev);
+		});
+		
+		
+		
+	});
+</script>
+</html>

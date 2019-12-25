@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JSON - JAVASCRIPT OBJECT NOTATION </title>
+</head>
+<body>
+	<p id="p1">IGATE</p>
+</body>
+<script src="./scripts/jquery.js"></script>
+<script>
+	var employee = {
+		id:714709,
+		name:'Karthik',
+		active:true,
+		hobbies:["programming","music"],
+		location:{
+			city:'Bangalore',
+			state:'Karnataka'
+		}
+	};
+	
+	var str = JSON.stringify(employee);
+	console.log(str);
+	
+	var emp = JSON.parse(str);
+	console.log(emp);
+</script>
+</html>
+
+<!--
+var p = $('#p1');
+p.css('color','red');
+//Using JSON
+p.css({'color':'yellow','background-color':'black'});
+
+-->
+

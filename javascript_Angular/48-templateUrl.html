@@ -1,0 +1,20 @@
+<html data-ng-app="directiveApp"> 
+	<head>
+		<title>TemplateUrl</title>
+	</head>
+	<body>
+		<igate-directive></igate-directive>
+	</body>
+	<script src="./scripts/angular.js"></script>
+	<script>
+		var app = angular.module('directiveApp',[]);
+		
+		app.directive('igateDirective',function(){
+			return {
+				templateUrl : 'test.html'
+			}
+		});
+	</script>
+</html>
+
+<!-- chrome.exe –allow-file-access-from-files -disable-web-security -->

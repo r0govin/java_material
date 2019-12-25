@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-Services</title>
+</head>
+<body>
+	<div data-ng-controller="ServiceController">
+		<a data-ng-href="{{address}}">IGATE</a>
+		
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+	
+	app.value('baseUrl','http://www.igate.com');
+	
+	
+	app.controller('ServiceController',function($scope,baseUrl){
+		$scope.address = baseUrl;
+		
+	});
+	
+</script>
+</html>

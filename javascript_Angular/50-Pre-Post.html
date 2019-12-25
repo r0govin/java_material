@@ -1,0 +1,39 @@
+<html data-ng-app="serviceApp"> 
+	<head>
+		<title>PreLink - Post Link</title>
+	</head>
+	<body>
+		<div>
+			<div parent-directive>
+			</div>
+		</div>
+	</body>
+	<script src="./scripts/angular.js"></script>
+	<script>
+		var app = angular.module('serviceApp',[]);
+		app.directive('parentDirective', function () {
+			return {
+				template: '<div>{{greeting}}{{name}} <br/> <child-directive></child-directive></div>',
+				link: {
+					pre: function(scope,elem,attr){
+						scope.name = 'Parent Root';
+						scope.greeting = 'Hey, I am ';
+					}
+				}
+			}
+		});
+		
+		app.directive('childDirective', function () {
+			return {
+				template: '<div>{{childSays}}</div>',
+				link:{
+					pre:function(scope,elem,attr){
+					scope.childSays = 'Hey, I am child, and my parent is '+ scope.name;
+				  }
+				}
+			}
+		});
+		
+	</script>
+</html>
+

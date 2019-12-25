@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery - DOM Manipulation</title>
+<style>
+	.custom{
+		color:red;
+		background-color:yellow;
+		font-size:30pt;
+		text-transform:uppercase;
+	}
+</style>
+</head>
+<body>
+	<p>Para-1</p>
+	<p id="p1"><b>Para-2</b></p>
+	<p class="para">Para-3</p>
+	<p class="para">Para-4</p>
+	<p data-custom="igate">Para-5</p>
+	<p data-custom="capegemini">Para-6</p>
+	<p data-custom="igate global solutions">Para-7</p>
+	<div>
+		<p>Para-8</p>
+	</div>
+	<input type="text"/>
+	<input type="text" readonly/>
+	<input type="text" disabled/>
+	<input type="checkbox" checked/>
+	<input type="checkbox" />
+	<input type="button" value="Click"/>
+	<input type="Submit" value="Submit"/>
+	<div id="main">
+		<div>One</div>
+		<div>Two</div>
+		<div>Three</div>
+		<div>Four</div>
+	</div>
+</body>
+<script src="./scripts/jquery.js"></script>
+<script>
+	$(document).ready(function(){
+		var $paragraphs = $('p');
+		$paragraphs.each(function(index,element){
+			//element is a Raw DOM Object
+			$(element).css({'color':'red'});
+		});
+		$(':text:first').val('IGATE-First');
+		$(':button:first').attr('disabled','disabled');
+		console.log($('#p1').text());
+		console.log($('#p1').html());
+		$('#p1').html('<b>CapeGemini</b>');
+		$('#main').append('<div>Five</div>')
+		$('#main').prepend('<div>Zero</div>')
+		$('#main').before('<div>Before</div>')
+		$('#main').after('<div>After</div>')
+	});
+</script>
+</html>
+<!--
+$('#main').children()
+[<div>​Zero​</div>​, <div>​One​</div>​, <div>​Two​</div>​, <div>​Three​</div>​, <div>​Four​</div>​, <div>​Five​</div>​]
+$('#main').children().first()
+[<div>​Zero​</div>​]
+$('#main').children().last()
+[<div>​Five​</div>​]
+$('#main').children().eq(3)
+[<div>​Three​</div>​]
+$('#main').children().eq(3).next()
+[<div>​Four​</div>​]
+$('#main').children().eq(3).next().prev()
+[<div>​Three​</div>​]
+$('#main').children().eq(3).next().prev().remove()
+[<div>​Three​</div>​]
+$('#main').children().eq(3).attr('data-custom','IGATE')
+[<div data-custom=​"IGATE">​Four​</div>​]
+$('#main').children().eq(3).removeAttr('data-custom')
+[<div>​Four​</div>​]
+
+$(':submit:first').addClass('custom')
+[<input type=​"Submit" value=​"Submit" class=​"custom">​]
+$(':submit:first').hasClass('custom')
+true
+$(':submit:first').removeClass('custom')
+[<input type=​"Submit" value=​"Submit" class>​]
+$(':submit:first').toggleClass('custom')
+[<input type=​"Submit" value=​"Submit" class=​"custom">​]
+$(':submit:first').toggleClass('custom')
+-->

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html data-ng-app="myApp">
+<head>
+  <title>AngularJS-angular.copy</title>
+</head>
+<body>
+  <div>
+    <div ng-controller="TrainersCtrl as ctrl">
+	   <div>
+		<span>Id: </span> <input type="text" readonly data-ng-model="ctrl.trainerCopy.id"/>
+		<span>Name: </span> <input type="text" data-ng-model="ctrl.trainerCopy.name"/>
+		<span>Technology: </span> <input type="text" data-ng-model="ctrl.trainerCopy.technology"/>
+		<input type="button" value="Save" data-ng-click="ctrl.saveTrainer()"/>
+	   </div>
+	   <hr/>
+      <table border="1" cellpadding="5">
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Technology</th>
+			<th/>
+		</tr>
+        <tr ng-repeat="trainer in ctrl.trainers">
+			<td>{{trainer.id}}</td>
+            <td>{{trainer.name}}</td>
+            <td>{{trainer.technology}}</td>
+			<td><input type="button" value="Select" data-ng-click="ctrl.selectTrainer(trainer)"/></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+ <script src="./scripts/angular.js"></script>
+ <script>
+	var app = angular.module('myApp', []);
+
+	app.controller("TrainersCtrl", function TrainersCtrl($scope) {
+				
+		this.trainers = [ 
+			{id:714709, name: "Karthik", technology: "Dotnet" },
+			{id:714710, name: "Ganesh", technology: "Dotnet" },
+			{id:605085, name: "Anil", technology: "JEE" }
+		];
+		
+		this.selectedTrainer = null;
+		
+		this.selectTrainer = function(trainer){
+			this.selectedTrainer = trainer;
+			this.trainerCopy = angular.copy(trainer);
+		}
+		
+		this.saveTrainer = function(){
+			for(prop in this.trainerCopy){
+				if(this.selectedTrainer.hasOwnProperty(prop)){
+					this.selectedTrainer[prop] = this.trainerCopy[prop];
+				}
+			}
+		}
+	});
+ </script>
+ </body>
+</html>

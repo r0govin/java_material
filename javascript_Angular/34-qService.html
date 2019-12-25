@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-q-Service</title>
+</head>
+<body>
+	<div data-ng-controller="ServiceController">
+		<input type="button" value="Fullfill Promise" data-ng-click="fullfill()"/>
+		<input type="button" value="Reject Promise" data-ng-click="reject()"/>
+	</div>
+	
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+	
+	app.controller('ServiceController',function($scope,$q){
+		var deferred = $q.defer();
+
+		var promise =deferred.promise;
+		
+		promise.then(function(response){
+			alert(response.msg);
+		},function(response){
+			alert(response.msg);
+		});
+		
+		$scope.fullfill = function(){
+			deferred.resolve({msg:'Success'});
+		}
+	
+		$scope.reject = function(){
+			deferred.reject({msg:'Fail'});
+		}
+		
+		
+		
+	});
+	
+</script>
+</html>

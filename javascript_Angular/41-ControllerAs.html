@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-ControllerAs</title>
+</head>
+<body>
+	<div data-ng-controller="MyController as ctrl">
+		<span>{{name}}</span>
+		<span>{{ctrl.companyName}}</span>
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+	
+	app.controller('MyController',function($scope){
+		this.companyName = "IGATE"
+		$scope.name = "Ganesh";
+	});
+	
+</script>
+</html>
+
+<!--
+var injector = angular.injector(['ng'])
+
+var compile = injector.get('$compile');
+
+var rootScope = injector.get('$rootScope')
+
+rootScope.name = "Karthik"
+"Karthik"
+
+var dom = "<div>{{name}}</div>"
+
+var linkFn = compile(angular.element(dom));
+
+var element = linkFn(rootScope)
+
+element
+[<div class=​"ng-binding ng-scope">​{{name}}​</div>​]
+
+rootScope.$digest()
+
+element
+[<div class=​"ng-binding ng-scope">​Karthik​</div>​]
+
+-->

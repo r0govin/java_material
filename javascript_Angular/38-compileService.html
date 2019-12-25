@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-compile</title>
+</head>
+<body>
+	<div data-ng-controller="ServiceController">
+		Markup : <input type="text" data-ng-model="exp"/>
+		<input type="button" value="Compile" data-ng-click="compileIt(exp)"/>
+		<hr/>
+		Result : <div id="target"></div>
+	</div>
+</body>
+<script src="./scripts/jquery.js"></script>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+
+	app.controller('ServiceController',function($scope,$compile){
+		$scope.name = "Karthik";
+		$scope.compileIt = function(dom){
+			var result = $compile(angular.element(dom))($scope);
+			angular.element('#target').append(result);
+		}
+	});
+	
+</script>
+</html>

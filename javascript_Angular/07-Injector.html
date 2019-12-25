@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+<title>AngularJS-Injector Service</title>
+</head>
+<body>
+	<h1>Injector Service Demo - Open Developer tools to see the result</h1>
+	<div ng-controller="SplController">
+		{{name}} - {{companyName}}
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('MyApp',[]);
+	
+	app.controller('SplController',function($scope,$rootScope){
+		/*$scope.name = "Karthik";
+		$scope.$parent.companyName = "IGATE";
+		*/
+		if($scope.name !== undefined && $rootScope.companyName != undefined){
+			console.log($scope.name);
+			console.log($rootScope.companyName);
+		}
+	});
+</script>
+	
+</html>
+
+<!--
+var injector = angular.injector(['ng','MyApp']);
+
+var controller = injector.get('$controller');
+
+var root = injector.get('$rootScope');
+
+var child = root.$new();
+
+root.companyName = "IGATE";
+
+child.name = "Karthik"
+
+var SplController = controller('SplController',{$scope:child,$rootScope:root})
+-->
+

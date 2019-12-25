@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-Digest Cycle</title>
+</head>
+<body>
+	<div data-ng-controller="MyController">
+		<input type="button" value="Change Model Value-Inbuilt Directive" data-ng-click="changeModel()" />
+		<input type="button" value="Change Model Value-Custom Directive" data-igate-click/>
+		<span>{{ModelVariable}}</span>
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+
+	app.directive('igateClick',function(){
+		return {
+			link:function(s,e,a){
+				e.bind('click',function(){
+					s.ModelVariable = "Changed by Directive";
+					s.$apply();
+				});
+			}
+		}
+	});
+	
+	app.controller('MyController',function($scope){
+		$scope.ModelVariable = "Initial Value";
+		$scope.$watch('ModelVariable',function(newVal,oldVal){
+			console.log(newVal,oldVal);
+		});
+		$scope.changeModel = function(){
+			$scope.ModelVariable = "Changed Value";
+		}
+	});
+	
+</script>
+</html>
+
+<!--
+var injector = angular.injector(['ng'])
+
+var compile = injector.get('$compile');
+
+var rootScope = injector.get('$rootScope')
+
+rootScope.name = "Karthik"
+"Karthik"
+
+var dom = "<div>{{name}}</div>"
+
+var linkFn = compile(angular.element(dom));
+
+var element = linkFn(rootScope)
+
+element
+[<div class=​"ng-binding ng-scope">​{{name}}​</div>​]
+
+rootScope.$digest()
+
+element
+[<div class=​"ng-binding ng-scope">​Karthik​</div>​]
+
+-->

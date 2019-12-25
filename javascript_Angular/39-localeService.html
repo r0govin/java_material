@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-Locale</title>
+</head>
+<body>
+	<div data-ng-controller="ServiceController">
+		{{today|date:dateFormat}}
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script src="./scripts/angular-locale_te-in.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+
+	app.controller('ServiceController',function($scope,$locale){
+		$scope.today = new Date();
+		$scope.dateFormat = 'fullDate';
+	    //$scope.dateFormat = $locale.DATETIME_FORMATS.fullDate;
+	});
+	
+</script>
+</html>

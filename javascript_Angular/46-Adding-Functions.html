@@ -1,0 +1,20 @@
+<html data-ng-app="debugApp"> 
+	<head>
+		<title>Adding Functions to Angular Module</title>
+	</head>
+	<body>
+		<sample-directive></sample-directive>
+	</body>
+	<script src="./scripts/angular.js"></script>
+	<script>
+		var app = angular.module('debugApp',[]);
+		app.quickTemplate=function(name,template){
+			app.directive(name,function(){
+				return {
+					template:template
+				}
+			});
+		};
+		app.quickTemplate('sampleDirective','<h1>Testing-1</h1>');
+	</script>	
+</html>

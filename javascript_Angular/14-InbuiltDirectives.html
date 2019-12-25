@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html data-ng-app="MyApp">
+<head>
+<title>AngularJS-In-BuiltDirectives</title>
+</head>
+<body>
+	<div data-ng-controller="MyCtrl">
+		<div>
+			<input type="text" data-ng-model="name"/>
+			<span data-ng-bind="name"></span>
+		</div>
+		<div data-ng-show="show">Hidden Data-Show</div>
+		<div data-ng-hide="show">Hidden Data-Hide</div>
+		<div data-ng-bind="company[0]"></div>
+		<div data-ng-init="company=['IGATE']">{{company[0]}}</div>
+		
+		<ol>
+			<li data-ng-repeat="name in names">{{name}}</li>
+		</ol>
+		<div data-ng-non-bindable>{{1+4}}</div>
+		<input type="button" value="ChangeName" data-ng-click="changeName()"/>
+		<hr/>
+		<div><img data-ng-src="{{logo}}"/></div>
+		<div><a data-ng-href="{{address}}">IGATE</a></div>
+		<div data-ng-if="decision">Show only condition Satisfy</div>
+		<div data-ng-bind-template="{{firstName}}-{{lastName}}"></div>
+	</div>
+
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('MyApp',[]);
+	
+	app.controller('MyCtrl',function($scope){
+		$scope.name="Karthik";
+		$scope.show = true;
+		$scope.names=['Arvind','Ashwin','Abishek'];
+		$scope.logo = 'logo.png';
+		$scope.address = 'http://www.igate.com';
+		$scope.decision = false;
+		$scope.firstName= "Karthik";
+		$scope.lastName= "Muthukrishnan";
+		$scope.changeName = function(){
+			$scope.name="Anil";
+		}
+	});
+</script>
+</html>

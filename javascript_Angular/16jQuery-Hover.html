@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jquery - Hover</title>
+	<style>
+		.customStyle1{
+			color:red;
+			background:yellow;
+			font-weight:bold;
+		}
+		.customStyle2{
+			color:green;
+			background:orange;
+			font-weight:bold;
+		}
+	</style>
+</head>
+<body>
+	<input id="btnSample" type="button" value="click" data-style="customStyle1"/>
+</body>
+<script src="./scripts/jquery.js"></script>
+<script>
+	$(document).ready(function(){
+		$(':button').bind('mouseenter mouseleave',function(){
+			var style = $(this).attr('data-style');
+			$(this).toggleClass(style);
+		});		
+	});
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-ng-app="MyApp">
+<head>
+	<title>AngularJS - Link function</title>
+	<style>
+		.customStyle1{
+			color:red;
+			background:yellow;
+			font-weight:bold;
+		}
+		.customStyle2{
+			color:green;
+			background:orange;
+			font-weight:bold;
+		}
+	</style>
+</head>
+<body>
+	<input id="btnSample" type="button" value="click" data-igate-hover data-style="customStyle1"/>
+	
+	<input id="btnSample" type="textbox" value="click" data-igate-hover data-style="customStyle2"/>
+	
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('MyApp',[]);
+	app.directive('igateHover',function(){
+		return {
+			restrict :'A',
+			link:function(scope,element,attrs){
+				element.bind('mouseenter mouseleave',function(){
+					element.toggleClass(attrs.style);
+				});
+			}
+		}
+	})
+</script>
+</html>

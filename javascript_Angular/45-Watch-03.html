@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html data-ng-app="myApp">
+<head>
+  <title>Scope - Watch</title>
+</head>
+<body>
+  <div>
+    <div ng-controller="WatchCtrl">
+		<span>Id:</span>
+		<input type="text" data-ng-model="employee.id"/><br/>
+		<span>Name:</span>
+		<input type="text" data-ng-model="employee.name"/>
+    </div>
+  </div>
+
+ <script src="./scripts/angular.js"></script>
+ <script>
+	var app = angular.module('myApp', []);
+
+	app.controller('WatchCtrl',function($scope){
+			
+		$scope.$watch('employee',function(newval,oldval){
+			console.log(newval,oldval);
+		},true);
+		//By default scope.watch does reference equality. setting true as 3rd arg checks for object equality
+		//if false it will serialize and compare object by copying them(expensive)
+	});
+	
+ </script>
+ </body>
+</html>

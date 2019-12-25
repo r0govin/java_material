@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<title>AngularJS-Model-View-Controller</title>
+</head>
+<body ng-controller="MyController">
+	<div>{{name}}</div>
+	<div ng-controller="AnotherController">{{name}}</div>
+</body>
+<script src="./scripts/angular-old.js"></script>
+<script>
+	function MyController($scope){
+		$scope.name = "Karthik";
+	}
+	function AnotherController($scope){
+		$scope.name = "Ganesh";
+	}
+</script>
+</html>
+
+<!--It Wont work with latest angular versions -->

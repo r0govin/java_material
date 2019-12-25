@@ -1,0 +1,40 @@
+First Round:
+1).Write logic for fibonacci series.
+2).Given a sentence, find the number of occurance of each word write code.
+	ex:Today is good day. A Good to work.
+	output:Today:1:
+		is:1
+		good:2 and so on
+3).Concurrent Modification concept with coding.
+4).Given a perfect cylinder filled with water, find the quatity of water in it.
+5).Given an arrayList which contains duplicate values, write code to remove duplicate elements from it.
+7).Iterator interface and iterator() demo with code.
+8).How to iterate elements in hashmap.
+9).Give your implementation for equals and hashCode()
+10).What happens if we check an employee with null object.
+11).Difference between HashMap and HashTable
+
+Second round:
+1. Why multithreading.
+2. Write a program for multi threading.
+3. Lifecycle of thread.
+4. sync in thread.
+5. OOPS concepts.
+5.Difference between abstract  and interface.
+6. Given a String s="abc123##ab4" display output as: 123##4.
+7. Given a String s="abc=1234=qwe=" dispaly output as s={ abc,1234,qwe}
+8.Autowiring, Container, annotations in Spring.
+ 
+Third round:
+1.Given 2 linked list:
+	L1 has {a,b}
+	L2 has {b,c}
+	write a code to display. elements present only in L1, elements present in L2, and common elements in both.
+2.SQL queries on Group By ,Joins
+3.questions on views.
+
+
+
+ 
+
+

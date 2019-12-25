@@ -1,0 +1,53 @@
+<html data-ng-app="MyApp">
+<head>
+<title>
+my angular
+</title>
+</head>
+<body >
+
+<div data-ng-controller="Mycntrl">
+		<div>
+			<span>Controller : </span>
+			<input type="text" data-ng-model="companayName"/>
+			<span data-ng-bind="companayName"></span>
+		</div>
+		<hr/>
+		<div data-igate-directive data-companay-name = {{companayName}} >			
+		</div>		
+		<hr/>
+
+	</div>
+
+
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+
+var app = angular.module('MyApp', []) ;
+app.directive('igateDirective',function(){
+		return {
+          replace: true,
+			scope: {companayName:'@'},
+			template:'<div>'+
+					'<span>Directive : </span>'+
+					'<input type="text" data-ng-model="companayName"/>'+
+					'<span data-ng-bind="companayName"></span>'+
+				'</div>',
+				controller: function($scope){
+				//	$scope.companayName = "Capgemini"
+				}
+		}
+	});
+
+
+
+    app.controller('Mycntrl',function($scope){
+		$scope.name = "Karthik";
+		$scope.companayName = "Capgemini" ;
+		$scope.myName = "kiran";
+	});
+
+
+</script>
+</html>

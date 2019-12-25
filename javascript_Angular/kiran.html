@@ -1,0 +1,67 @@
+<html data-ng-app= 'MyApp'>
+<head>
+
+<title>AngularJS - Link function</title>
+	<style>
+		.customStyle1{
+			color:black;
+			background:lightgrey;
+			font-weight:bold;
+		}
+		
+		.norma{
+			color:black;
+			background:lightblue;
+			font-weight:bold;
+		}
+		
+		
+	</style>
+</head>
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+
+<div data-ng-controller = "myController">
+<label for="Name">Name </label>
+<input type="textbox" data-ng-model = "name"  data-igate-hover data-style="customStyle1"/>
+<span data-ng-bind = "name"> </span>
+<br><br>
+<label for="age">Age &nbsp&nbsp</label>
+<input type="textbox" data-ng-model = "age" data-igate-hover data-style="customStyle1"/>
+<span data-ng-bind = "age"> </span>
+<br><br>
+<label for="loc">location &nbsp</label>
+<input type="textbox" data-ng-model = "location" data-igate-hover data-style="customStyle1"/>
+<span data-ng-bind = "location"> </span>
+</div>
+
+
+
+
+
+</body>
+
+
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('MyApp',[]);
+	app.controller('myController', function($scope){
+
+	});
+	
+	app.directive('igateHover',function(){
+		return {
+			restrict :'A',
+			link:function(scope,element,attrs){
+				element.bind('focusin focusout',function(){
+					element.toggleClass(attrs.style);
+				});
+			}
+		}
+	})
+</script>
+</html>

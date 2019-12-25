@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html data-ng-app="MyApp">
+<head>
+	<title>AngularJS-Directive-Transclude</title>
+	<style>
+		.custom{
+			width:300px;
+			height:200px;
+			background-color:yellow;
+			color:red;
+		}
+		.spl{
+			color:green
+		}
+	</style>
+</head>
+<body>
+	<div data-igate-directive>
+	<div class="spl">This is a Custom Message-1</div>
+	<div class="spl">This is a Custom Message-2</div>
+	</div>
+	<hr/>
+	<div data-igate-directive>
+	<div class="spl">This is another Custom Message-1</div>
+	<div class="spl">This is another Custom Message-2</div>
+	</div>
+	
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('MyApp',[]);
+	
+	app.directive('igateDirective',function(){
+		return {
+			transclude:true,
+			template:'<div class="custom">Header<hr/><ng-transclude></ng-transclude><hr/>Footer</div>'
+		}
+	});
+	
+</script>
+</html>

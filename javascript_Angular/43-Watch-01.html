@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-ng-app="myApp">
+<head>
+  <title>Scope - Watch</title>
+</head>
+<body>
+  <div>
+    <div ng-controller="WatchCtrl">
+		<span>Id:</span>
+		<input type="text" data-ng-model="employee.id"/>
+		<hr/>
+		<div data-ng-show="showErrors">
+			<ul>
+				<li data-ng-repeat="error in errors">{{error}}</li>
+			</ul>
+		</div>
+    </div>
+  </div>
+
+ <script src="./scripts/angular.js"></script>
+ <script>
+	var app = angular.module('myApp', []);
+
+	app.controller('WatchCtrl',function($scope){
+	
+		function hasValidLength(id){
+			return /[0-9]{6}/.test(id);
+		}
+		
+		function hasOtherThanNumbers(id){
+			return /[0-9]/.test(id);
+		}
+		
+		$scope.$watch('employee.id',function(newval,oldval){
+			console.log(newval,oldval);
+			if(!newval) return;
+			$scope.errors = [];
+			if(!hasValidLength(newval)){
+				$scope.errors.push('Id must be 6 digits');
+			}
+			if(!hasOtherThanNumbers(newval)){
+				$scope.errors.push('Id should contain only numbers');
+			}
+			$scope.showErrors = $scope.errors.length;
+		},true);
+	});
+	
+ </script>
+ </body>
+</html>

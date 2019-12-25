@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-http-q-Service</title>
+</head>
+<body>
+	<div data-ng-controller="EmployeeController">
+		<ul>
+			<li data-ng-repeat="employee in employees" data-ng-bind-template="{{employee._id}}-{{employee.name}}-{{employee.salary}}"></li>
+		</ul>
+		<div data-ng-if="errorOccured">{{error}}</div>
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+	
+	app.constant('apiKey','MtPdcNq7LNIqqCkjtZS-GD4EzIY9J_qE');
+	
+	app.factory('EmployeeService',function($http,$q,apiKey){
+		var deferred = $q.defer();
+		var promise = deferred.promise;
+		return {
+			getAllEmployees:function(){
+				var url = "https://api.mongolab.com/api/1/databases/igateangulardb/collections/employees?apiKey="+apiKey;
+				$http({
+					method: 'GET',
+					url: url
+				}).then(function(response){
+					deferred.resolve(response);
+				},function(err){
+					deferred.reject(err);
+				});
+				return promise;
+			}
+		}
+	});
+
+	app.controller('EmployeeController',function($scope,EmployeeService){
+		var promise = EmployeeService.getAllEmployees();
+		promise.then(function(response){
+			$scope.errorOccured = false;
+			$scope.employees= response.data;
+		},function(response){
+			$scope.error =response.data.message;
+			$scope.errorOccured = true;
+		});
+	});
+	
+</script>
+</html>

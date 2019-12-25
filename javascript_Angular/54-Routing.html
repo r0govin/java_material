@@ -1,0 +1,50 @@
+<html data-ng-app="routeApp"> 
+	<head>
+		<title>AngularJS Routing Basics</title>
+	</head>
+	<body>
+		<div>
+			<h1>AngularJS Training</h1>
+		<div>
+		<div data-ng-controller="RouteCtrl">
+			<div data-ng-view></div>
+		</div>
+		<div>&copy;Copyrights Reserved 2015 IGATE</div>
+	</body>
+	<script src="./scripts/jquery.js"></script>
+	<script src="./scripts/angular.js"></script>
+	<script src="./scripts/angular-route.js"></script>
+	<script>
+		var app = angular.module('routeApp',['ngRoute']);
+
+		app.config(function($routeProvider){
+			$routeProvider.when('/',{
+				template:'<h1>Home Page</h1>'
+			}).when('/partial',{
+				templateUrl:'partials/partial.html',
+				controller:function($scope){
+					$scope.name="Karthik";
+				}
+			}).when('/test/:country/:state/:city',{
+				templateUrl:'partials/map.html',
+				controller:'RouteCtrl'
+			}).when('/test/:msg',{
+				redirectTo : function(routeParams,path,search){
+					console.log(routeParams,path,search);
+					return '/'
+				}
+			}).otherwise({
+				redirectTo:'/'
+			});
+		});
+		
+		app.controller('RouteCtrl',function($scope,$routeParams){
+			$scope.result = $routeParams.country+' '+ $routeParams.state+' '+$routeParams.city;
+			
+		});
+	
+	</script>
+</html>
+
+
+

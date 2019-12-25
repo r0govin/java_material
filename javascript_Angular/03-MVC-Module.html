@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+<title>AngularJS-Model-View-Controller-Module</title>
+</head>
+<body>
+	<div ng-controller="MyController">
+		<h1>{{companyName}}</h1>
+		<hr/>
+		<h2>{{name}}</h2>
+		<hr/>
+		<h3>{{hobbies[0]}} - {{hobbies[1]}}</h3>
+		<div ng-controller="AnotherCtrl">
+			<h2>{{companyName}}-{{name}}</h2>
+		</div>
+	</div>
+
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('MyApp',[]);
+	
+	app.controller('MyController',function($scope){
+		$scope.name = "Karthik";
+		$scope.hobbies = ["Programming","Music"];
+		$scope.companyName = "IGATE";
+	});
+	
+	app.controller('AnotherCtrl',function($scope){
+		$scope.name = "Ganesh";
+	});
+	
+</script>
+</html>
+

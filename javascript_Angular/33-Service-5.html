@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-ng-app="serviceApp">
+<head>
+	<title>AngularJS-Services</title>
+</head>
+<body>
+	<div data-ng-controller="ServiceController">
+		<span>{{result}}</span>
+		
+	</div>
+</body>
+<script src="./scripts/angular.js"></script>
+<script>
+	var app = angular.module('serviceApp',[]);
+	
+	app.provider('HelloService',function(){
+		this.name = "GUEST";
+		
+		this.$get = function(){
+			var name = this.name;
+			return {
+				sayHi:function(){
+					return "Hi "+name;
+				}
+			}
+		}
+		this.setName = function(name){
+			this.name = name;
+		}
+		
+	});
+	
+	app.config(function(HelloServiceProvider){
+		HelloServiceProvider.setName("Karthik");
+	});
+	
+	app.controller('ServiceController',function($scope,HelloService){
+		$scope.result = HelloService.sayHi();
+		
+	});
+	
+</script>
+</html>

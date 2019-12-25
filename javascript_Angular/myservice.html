@@ -1,0 +1,31 @@
+<html data-ng-app="MyApp">
+<head>
+<title>
+my angular
+</title>
+</head>
+<body >
+ <div data-ng-controller = "Mycntrl" data-ng-bind = "results"></div>
+</body>
+<script src="./scripts/angular.js"></script>
+
+<script>
+var app = angular.module('MyApp', []) ;
+app.factory('Addservice', function() {
+  return { 
+  add: function (a,b) {
+     return a+b;
+   }
+  }
+  
+  });
+  
+      app.controller('Mycntrl', function($scope, Addservice){
+   $scope.results = Addservice.add(3,4);
+  
+  });
+
+
+
+</script>
+</html>
